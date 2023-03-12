@@ -21,6 +21,7 @@ Input features $X_t^{(i)}$ will be the data for days in range $[t-n\cdots t]$ an
 - Total time $T = 2500$
 - Period $n = 4$
 - Number of iterations $k = 10.000$
+- Convergence threshold of $1e^{-8}$
 - Learning rate $\alpha = 0.1$
 - $X$ features :
     - *Open*
@@ -139,6 +140,7 @@ There you can find the keys used in the configuration file, and the type and mea
 - `total_time`: (int) Total studied period
 - `period`: (int) Number of rows to form one input
 - `iterations`: (int) Max number of iterations for gradient descent
+- `convergence_threshold`: (float) threshold to determine if convergence is met
 - `alpha`: (float) Learning rate used to scale the descent derivatives
 - `scaling_method`: (string) Method used for scaling data
 
