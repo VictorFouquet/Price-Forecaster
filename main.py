@@ -34,7 +34,7 @@ def main():
     # Saves price forecaster's model and stats
     pf.save_stats_and_model()
     # Displays test and training results
-    pf.display()
+    pf.show_stats()
 
 
 if __name__ == "__main__":
