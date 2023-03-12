@@ -1,0 +1,10 @@
+{
+    "csv_path": "spy.csv",
+    "target_label": "Close",
+    "exclude_labels": ["Date", "day", "week", "weekday", "year"],
+    "total_time": 2500,
+    "period": 4,
+    "iterations": 10000,
+    "alpha": 0.1,
+    "scaling_method": "max"
+}
