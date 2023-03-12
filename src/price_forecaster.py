@@ -57,7 +57,8 @@ class PriceForecaster:
         # Trains the model using gradient descent 
         self.model.gradient_descent(
             self.X_train, self.Y_train, initial_w, initial_b,
-            self.config["alpha"], self.config["iterations"]
+            self.config["alpha"], self.config["iterations"],
+            self.config["convergence_threshold"]
         )
 
     def test(self):
