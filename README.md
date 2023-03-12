@@ -32,7 +32,7 @@ Input features $X_t^{(i)}$ will be the data for days in range $[t-n\cdots t]$ an
 
 ### Result
 
-An average accuracy of 98.7% was reached during the testing step.
+An average accuracy of 98.9% was reached during the testing step, with a convergence met after 5200 iterations.
 
 The model as been saved and provided as an example, see `model/example.model.json` in this repository.
 
