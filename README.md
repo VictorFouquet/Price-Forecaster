@@ -6,7 +6,7 @@ We want to be able to predict the price of a stock action, S&P500 SPY in this ex
 
 We'll use a linear regression model implementing gradient descent technique.
 
-Stock prices for a given day are highly influenced by the previous days' prices.
+Stock prices for a given day can be influenced by the previous days' exchanged volumes, and the opening, closing, highest, and lowest prices.
 
 We will train and test the model on a time period called $T$.
 
@@ -16,14 +16,36 @@ Input features $X_t^{(i)}$ will be the data for days in range $[t-n\cdots t]$ an
 
 ## Current results
 
+### Configuration used
+
+- Total time $T = 2500$
+- Period $n = 4$
+- Number of iterations $k = 10.000$
+- Learning rate $\alpha = 0.1$
+- $X$ features :
+    - *Open*
+    - *High*
+    - *Low*
+    - *Close*
+    - *Volume*
+- *Close* feature used as $Y_{t+1}$
+
+### Result
+
+An average accuracy of 98.7% was reached during the testing step.
+
+The model as been saved and provided as an example, see `model/example.model.json` in this repository.
+
+![prediction_graph](img/current_result.png)
+
 ## Workflow
 
 ### Data processing
 
 #### Preprocessing
 
-- Drop unused columns from dataset.
-- Interpolate missing data.
+- Drop unused columns from dataset
+- Interpolate missing data
 - Slice the dataset to match the whole studied period's length
 - Scale the data to range between $[0 \cdots 1]$
 
@@ -51,7 +73,7 @@ $$
 
 #### Cost derivatives
 
-To compute the gradient when performin the descent, we will use partial derivatives of the cost function :
+To compute the gradient when performing the descent, we will use partial derivatives of the cost function :
 
 - Partial derivative of $J$ with respect to $\vec{w}$, computed for every feature $x^{(i)}_n$ of $x^{(i)}$:
 
@@ -94,6 +116,8 @@ Please refer to the `README.md` stored in the `models` folder for further docume
 
 For better result readability, when the training and testing of the model are done, the main script will display a graph with both predicted and actual closing prices versus time.
 
+The cost versus time evolution will also be displayed to render the training step.
+
 ## Running the project
 
 ### Setup
@@ -124,10 +148,18 @@ The project entry-point is the `main.py` file located at the root of this reposi
 
 The script can take an optionnal argument, being the path to a pre-trained model.
 
-**Note:** If a pre-trained model is loaded, its structure must match the one documented in the `models/README.md` file, plus have the same `config` value as the one of the current `config.json` (else an error will be thrown).
+**Note:** If a pre-trained model is loaded, its structure must match the one documented in the `models/README.md` file, plus have the same `config` value as the one of the current `config.json` (else an exception will be thrown).
 
 #### Run the script
 
 Without argument : `python3 main.py`
 
 With pre-trained model argument: `python3 main.py $path/to/pretrained/model.json$`
+
+## Disclaimer
+
+### No investment advice provided
+
+This project is made for **entertainment and educational purposes only** and do not constitute investment advice.
+
+As the author of the provided base code, I will not accept liability for any loss or damage, including without limitation any loss of profit, which may arise directly or indirectly from use of or reliance on the algorithmically generated information.
