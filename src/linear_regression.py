@@ -12,7 +12,7 @@ class LinearRegression:
         self.bias = None              # Bias of the model
         self.cost_history = []        # Historical costs of the model
 
-    def gradient_descent(self, x, y, w_init, b_init, alpha, num_iters):
+    def gradient_descent(self, x, y, w_init, b_init, alpha, num_iters, conv_threshold=1e-8):
         """
         Performs a gradient descent to optimize the model's weights and bias
             Args:
@@ -41,6 +41,12 @@ class LinearRegression:
             # Displays cost to inform user about the progression
             if i% np.ceil(num_iters / 100) == 0:
                 print(f"Iteration {i:4d}: Cost {self.cost_history[-1]:8.9f}")
+            # Checks for convergence
+            if (
+                len(self.cost_history) > 1 and 
+                abs(self.cost_history[-1] - self.cost_history[-2]) < conv_threshold
+            ):
+                return self.weights, self.bias, self.cost_history
         
         return self.weights, self.bias, self.cost_history
 
