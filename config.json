@@ -5,7 +5,7 @@
     "total_time": 2500,
     "period": 4,
     "iterations": 10000,
-    "convergence_threshold": 0.00001,
+    "convergence_threshold": 1e-8,
     "alpha": 0.1,
     "scaling_method": "max"
 }
